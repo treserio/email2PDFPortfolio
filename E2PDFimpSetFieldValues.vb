@@ -1,4 +1,4 @@
-'List of required references: "Visual Basic For Applications", "Microsoft Outlook 16.0 Object Library", "OLE Automation", "Microsoft Office 16.0 Object Library", "Microsoft VBScript Regular Expressions 5.5", "Microsoft Scripting Runtime", "Microsoft Word 16.0 Object Library", "Microsoft Forms 2.0 Object Library", "Adobe Acrobat 10.0 Type Library", "AdobePDFMakerForOffice" <-- attempting to view the portfolio object.
+'List of required references: "Visual Basic For Applications", "Microsoft Outlook 16.0 Object Library", "OLE Automation", "Microsoft Office 16.0 Object Library", "Microsoft VBScript Regular Expressions 5.5", "Microsoft Scripting Runtime", "Microsoft Word 16.0 Object Library", "Microsoft Forms 2.0 Object Library", "Adobe Acrobat 10.0 Type Library" (may also be found here c:\Program Files\Adobe\Acrobat 11.0\Acrobat\acrobat.tlb), "AdobePDFMakerForOffice" <-- attempting to view the portfolio object.
 
 Private Declare Function SetCurrentDirectoryA Lib "kernel32" (ByVal lpPathName As String) As Long
 

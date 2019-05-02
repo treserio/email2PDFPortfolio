@@ -2,12 +2,12 @@
 // C:\Users\<username>\AppData\Roaming\Adobe\Acrobat\ if the folder is missing the following add them for Acrobat 11, it will change if it's DC instead "Privileged\11.0\JavaScripts".
 
 // For a regular pdf this will import items as attachments, for a pdf portfolio it will import and provide fields to display additional data in a list format.
-safeImportDataObject = app.trustedFunction(function(impDoc)
+safeImportDataObject = app.trustedFunction(function(objName, parntPath)
 {
     app.beginPriv();
     // (name, location)
-    this.importDataObject("Test.pdf", "/C/Users/tserio/Documents/Test.pdf");
-    // app.alert("Import was Successful");
+    this.importDataObject(objName, parntPath);
+    // app.alert("Import has run");
     app.endPriv();
 });
 
