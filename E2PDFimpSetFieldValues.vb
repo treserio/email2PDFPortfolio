@@ -32,7 +32,7 @@ Function findFolders(ByRef dPath As String) As Variant
     Set objFSO = CreateObject("Scripting.FileSystemObject")
     'Get the folder object
     Dim objFolder As Object
-    'Final path "\\HOLDENDATA\Common\Cases\"
+    'Final path "\\HOLDEN-FS01\Common\Cases\"
     Set objFolder = objFSO.GetFolder(dPath)
     'Create 2D Array for storage along with collections for specific text and full folder name
     Dim storageArray(1) As Collection
@@ -103,11 +103,11 @@ Sub emailIdent()
     Dim olShareName As Outlook.Recipient: Set olShareName = olNamespace.CreateRecipient("FileRoom@holdenlitigation.com")
     Dim olFolder As Outlook.MAPIFolder: Set olFolder = olNamespace.GetSharedDefaultFolder(olShareName, olFolderInbox)
     'Create variable for directory path, uneccessary but can later be used to collect user input if variable paths are required, or to set in app settings.
-    Dim pathString As String: pathString = "\\HOLDENDATA\Common\Cases\"
+    Dim pathString As String: pathString = "\\HOLDEN-FS01\Common\Cases\"
     'Create comparison array with folder keys and names of Open cases
     Dim openKeys As Variant: openKeys = findFolders(pathString)
     'Use base 'Closed File' folder to pull yearly folders, for each year folder, pull 2D array of keys and folder names to add to the year folder's position in the 2D parent array. parentString = year folder, parentString + clsdKeys(1) = sub folders 2D array of path and key.
-    Dim parentString As String: parentString = "\\HOLDENDATA\archive\Closed Files\"
+    Dim parentString As String: parentString = "\\HOLDEN-FS01\archive\Closed Files\"
     Dim clsdTemp As Variant: clsdTemp = findFolders(parentString)
     'folders will be returned with [key][fullName], then overwrite [key] with 2D array of subfolder[key][fullName]
     'for each parent folder, clsdKeys(1) loop through clsdKeys(0)(0)(i) for keys clsdKeys(0)(1)(i) for fullNames
@@ -132,7 +132,7 @@ Sub emailIdent()
             For Each key In openKeys(0)
                 If InStr(itemSubj, key) > 0 Then
                     'How to access the correct path = openKeys(1)(keyI)
-                    fullPath = "\\HOLDENDATA\Common\Cases\" & openKeys(1)(keyI) & "\2 Correspondence\E-mail Correspondence\"
+                    fullPath = "\\HOLDEN-FS01\Common\Cases\" & openKeys(1)(keyI) & "\2 Correspondence\E-mail Correspondence\"
                     'Uncomment below to confirm file path that is being used for save location
                     MsgBox (fullPath & "  :  " & itemSubj)
                     
@@ -163,7 +163,7 @@ Sub emailIdent()
                     'clsdKeys(1)/(array value)/(0=key array) (1=folderName object)/(1=folderName)
                     'MsgBox (prntFldr & "  " & key & "  " & clsdKeys(1)(keyI)(1)(keyJ))
                     If InStr(itemSubj, key) > 0 Then
-                        fullPath = "\\HOLDENDATA\archive\Closed Files\" & prntFldr & "\" & clsdKeys(1)(keyI)(1)(keyJ) & "\2 Correspondence\E-mail Correspondence\"
+                        fullPath = "\\HOLDEN-FS01\archive\Closed Files\" & prntFldr & "\" & clsdKeys(1)(keyI)(1)(keyJ) & "\2 Correspondence\E-mail Correspondence\"
                         MsgBox (fullPath)
                         'add check to see if the destination document is read only
                         If checkFolder(fullPath) = 0 Then
